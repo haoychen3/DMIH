@@ -98,7 +98,7 @@ def main():
             ssim_s += sc_s
             lpips_s += sc_l
             dists_s += sc_d
-    n_secrets_set = int(len(secret_imgs) / config.hiding.n_secrets)
+    n_secrets_set = int(len(secret_imgs)/config.hiding.n_secrets)
     print("Average Extraction Accuracy: PSNR={}, SSIM={}, LPIPS={}, DISTS={}.".format(psnr_f/n_secrets_set, ssim_f/n_secrets_set, lpips_f/n_secrets_set, dists_f /n_secrets_set))
     print("Average Model Fidelity: PSNR={}, SSIM={}, LPIPS={}, DISTS={}.".format(psnr_s/n_secrets_set, ssim_s/n_secrets_set, lpips_s/n_secrets_set, dists_s/n_secrets_set))
     return 0
