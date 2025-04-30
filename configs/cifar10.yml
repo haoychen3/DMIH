@@ -1,0 +1,60 @@
+data:
+    dataset: "CIFAR10"
+    image_size: 32
+    channels: 3
+    logit_transform: false
+    uniform_dequantization: false
+    gaussian_dequantization: false
+    random_flip: false
+    rescaled: true
+    num_workers: 4
+
+model:
+    type: "simple"
+    in_channels: 3
+    out_ch: 3
+    ch: 128
+    ch_mult: [1, 2, 2, 2]
+    num_res_blocks: 2
+    attn_resolutions: [16, ]
+    dropout: 0.0
+    var_type: fixedlarge
+    ema_rate: 0.9999
+    ema: False
+    resamp_with_conv: True
+
+diffusion:
+    beta_schedule: linear
+    beta_start: 0.0001
+    beta_end: 0.02
+    num_diffusion_timesteps: 1000
+
+hiding:
+    n_iters: 2000
+    n_secrets: 1
+    sparsity: 0.01
+    n_layers: 15
+    lora_lr: 0.0001
+    lbd: 1.0
+    ts: 500
+    ts_interval: 100
+    loraplus_lr_ratio: 20
+    rank: 64
+    select_iters: 50
+    select_lr: 0.0001
+    seed: 1234
+    snapshot_freq: 1000
+
+sampling:
+    batch_size: 500
+    last_only: True
+    ckpt_id: 2000
+
+optim:
+    weight_decay: 0.000
+    optimizer: "Adam"
+    lr: 0.0001
+    beta1: 0.9
+    amsgrad: false
+    eps: 0.00000001
+    grad_clip: 1.0
